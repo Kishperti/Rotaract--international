@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Reveal - Rotaract District 3011</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+        
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 12, 41, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-container {
+            text-align: center;
+            position: relative;
+        }
+        
+        .loader-ring {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #ff8a00;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .navmenu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-list li {
+            margin: 0 15px;
+        }
+        
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+        
+        .nav-list a:hover,
+        .nav-list a.active {
+            color: #ff8a00;
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, #6f00ff, #9f00ff);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.4);
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 992px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .navmenu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 80px);
+                background: rgba(15, 12, 41, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 40px 20px;
+                transition: all 0.4s ease;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+            }
+            
+            .navmenu.active {
+                right: 0;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-list li {
+                margin: 10px 0;
+                width: 100%;
+            }
+            
+            .nav-list a {
+                display: block;
+                padding: 12px 15px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-list a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .login-btn {
+                margin-top: 20px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Main Content Styles */
+        .container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transform-style: preserve-3d;
+        }
+        
+        /* Animated Background Elements - Optimized for Mobile */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .bg-element:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .bg-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .bg-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+        
+        /* Main Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            transform-style: preserve-3d;
+            animation: contentFloat 8s infinite ease-in-out;
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        @keyframes contentFloat {
+            0%, 100% {
+                transform: translateY(0) rotateY(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateY(5deg);
+            }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(45deg, #ff8a00, #e52e71, #00b4db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        /* 3D Reveal Button */
+        .reveal-btn {
+            position: relative;
+            display: inline-block;
+            padding: 16px 36px;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(229, 46, 113, 0.4);
+            text-decoration: none;
+        }
+        
+        .reveal-btn:hover {
+            transform: translateY(-5px) rotateX(10deg);
+            box-shadow: 0 15px 40px rgba(229, 46, 113, 0.6);
+        }
+        
+        .reveal-btn:active {
+            transform: translateY(0) rotateX(0deg);
+        }
+        
+        .reveal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .reveal-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Floating 3D Elements - Optimized for Mobile */
+        .floating-element {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            animation: floatElement 20s infinite linear;
+            opacity: 0.7;
+        }
+        
+        @keyframes floatElement {
+            0% {
+                transform: translateY(0) rotateX(0) rotateY(0) rotateZ(0);
+            }
+            100% {
+                transform: translateY(-100vh) rotateX(360deg) rotateY(180deg) rotateZ(90deg);
+            }
+        }
+        
+        /* Glow Effects - Optimized for Mobile */
+        .glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .glow-1 {
+            background: #ff8a00;
+            top: 20%;
+            left: 20%;
+            animation: pulse 4s infinite alternate;
+        }
+        
+        .glow-2 {
+            background: #e52e71;
+            bottom: 20%;
+            right: 20%;
+            animation: pulse 5s infinite alternate-reverse;
+        }
+        
+        .glow-3 {
+            background: #00b4db;
+            top: 60%;
+            left: 60%;
+            animation: pulse 6s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0.1;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            p {
+                font-size: 0.9rem;
+            }
+            
+            .reveal-btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .bg-element:nth-child(1) {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .bg-element:nth-child(2) {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .bg-element:nth-child(3) {
+                width: 100px;
+                height: 100px;
+                left: 10%;
+            }
+            
+            .glow {
+                width: 100px;
+                height: 100px;
+                filter: blur(30px);
+            }
+            
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            /* Show floating elements on mobile but with reduced size */
+            .floating-element {
+                width: 60px;
+                height: 60px;
+                opacity: 0.5;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            p {
+                font-size: 0.85rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .content {
+                padding: 10px;
+            }
+            
+            /* Keep background elements visible on very small screens */
+            .bg-element {
+                display: block;
+                opacity: 0.2;
+            }
+            
+            .bg-element:nth-child(1) {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .bg-element:nth-child(2) {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .bg-element:nth-child(3) {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .glow {
+                width: 80px;
+                height: 80px;
+                filter: blur(20px);
+                opacity: 0.2;
+            }
+            
+            .floating-element {
+                width: 40px;
+                height: 40px;
+                opacity: 0.4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="loader-ring"></div>
+            <img src="assets/img/R.png" class="loader-logo" alt="Rotaract Logo">
+        </div>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/img/R2.png" alt="Rotaract District 3011">
+            </a>
+            
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="navmenu">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="reveal.html" class="active">Club Finder</a></li>
+                    <li><a href="documents.html">District Documents</a></li>
+                </ul>
+                <button class="login-btn">Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Animated Background Elements -->
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        
+        <!-- Glow Effects -->
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <h1>🌟 Discover Rotaract District 3011 🌟</h1>
+            <p>
+                Step into the vibrant world of Rotaract District 3011 — a community of young
+                leaders, changemakers, and innovators. From impactful projects to inspiring
+                events, our district is driven by the spirit of service and friendship.
+                <br><strong>Tap below to explore our journey.</strong>
+            </p>
+            
+            <a href="new4.html" class="reveal-btn" id="revealBtn">
+                Tap to Reveal
+            </a>
+        </div>
+        
+        <!-- Floating 3D Elements -->
+        <div class="floating-element" style="width: 100px; height: 100px; background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22%3E%3Cpolygon points=%2250,5%2090,35%2075,80%2025,80%2010,35%22 fill=%22rgba(255,255,255,0.2)%22 stroke=%22%23fff%22 stroke-width=%222%22/%3E%3C/svg%3E'); left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22rgba(255,255,255,0.2)%22 stroke=%22%23fff%22 stroke-width=%222%22/%3E%3C/svg%3E'); right: 15%; top: 30%; animation-delay: 5s;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22%3E%3Crect x=%2210%22 y=%2210%22 width=%2280%22 height=%2280%22 fill=%22rgba(255,255,255,0.2)%22 stroke=%22%23fff%22 stroke-width=%222%22 rx=%2210%22/%3E%3C/svg%3E'); left: 20%; bottom: 20%; animation-delay: 10s;"></div>
+    </div>
+    
+    <script>
+        // Hide preloader when page is loaded
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(function() {
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navMenu = document.querySelector('.navmenu');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // Change icon based on menu state
+                const icon = mobileNavToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-list a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+            
+            // Enhanced reveal function with smooth transition
+            const revealBtn = document.getElementById('revealBtn');
+            
+            revealBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Show preloader with smooth transition
+                const preloader = document.getElementById('preloader');
+                preloader.style.display = 'flex';
+                setTimeout(function() {
+                    preloader.style.opacity = '1';
+                }, 10);
+                
+                // Redirect immediately without artificial delay
+                window.location.href = revealBtn.href;
+            });
+        });
+    </script>
+</body>
+</html>

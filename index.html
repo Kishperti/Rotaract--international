@@ -1,0 +1,3562 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+    Rotaract Club of Delhi Nexus
+  </title>
+  <meta content="Mentor Bootstrap Template - Online Learning Platform" name="description"/>
+  <meta content="Mentor, Education, Bootstrap, Online Courses, Learning" name="keywords"/>
+  <!-- Favicons -->
+  <link href="assets/img/R.png" rel="icon"/>
+  <link href="assets/img/R.png" rel="apple-touch-icon"/>
+  <link href="assets/css/event.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Raleway:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Owl Carousel CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet"/>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet"/>
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+  <!-- Animation & Theme CSS -->
+  <link href="assets/css/animate.css" rel="stylesheet"/>
+  <link href="assets/css/magnific-popup.css" rel="stylesheet"/>
+  <link href="assets/css/bootstrap-datepicker.css" rel="stylesheet"/>
+  <link href="assets/css/jquery.timepicker.css" rel="stylesheet"/>
+  <link href="assets/css/flaticon.css" rel="stylesheet"/>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet"/>
+  <style>
+   /* Consolidated Card Layout Styling */
+      #blog-cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .article {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: transform 0.2s;
+      }
+
+      .article:hover {
+        transform: translateY(-5px);
+      }
+
+      .article img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .article div {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .article span {
+        background: #6c63ff;
+        color: #fff;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        display: inline-block;
+        width: fit-content;
+      }
+
+      .article h3 {
+        font-size: 18px;
+        margin: 0 0 10px;
+        color: #333;
+      }
+
+      .article p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .article a {
+        text-decoration: none;
+        color: #ec3ca5;
+        font-weight: bold;
+      }
+
+      /* Modal Animation */
+      @keyframes slideUp {
+        from {
+          transform: translateY(60px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* User Dropdown */
+      #userInfo {
+        display: none;
+        z-index: 10000;
+      }
+
+      .user-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
+      #userIcon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+      }
+
+      #userIcon:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.2s ease;
+      }
+
+      #userDropdown {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        min-width: 150px;
+        z-index: 10001;
+      }
+
+      #userDropdown div {
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+
+      #userDropdown div:hover {
+        background-color: #f5f5f5;
+      }
+
+      /* Event Cards */
+      .event-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .event-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .event-card-body {
+        padding: 25px;
+      }
+
+      .event-card-body span {
+        display: inline-block;
+        margin-right: 15px;
+        color: #6c63ff;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .event-card-body h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .event-card-body p {
+        font-size: 16px;
+        color: #777;
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+  /* Floating background elements */
+  .about-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+  }
+  
+  .circle-1 {
+    width: 300px;
+    height: 300px;
+    background: #6c63ff;
+    top: 10%;
+    left: 5%;
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .circle-2 {
+    width: 400px;
+    height: 400px;
+    background: #ec3ca5;
+    bottom: 10%;
+    right: 5%;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+  
+  .circle-3 {
+    width: 200px;
+    height: 200px;
+    background: #4fd1c5;
+    top: 50%;
+    right: 15%;
+    animation: float 12s ease-in-out infinite 2s;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+  
+  /* Image hover effects */
+  .about-image-wrapper:hover .about-image {
+    transform: translateY(-5px) scale(1.02) rotate(1deg);
+    box-shadow: 0 30px 60px -12px rgba(108, 99, 255, 0.25);
+  }
+  
+  .about-image-wrapper:hover .image-frame {
+    top: -15px;
+    left: -15px;
+  }
+  
+  .about-image-wrapper:hover .image-overlay {
+    opacity: 1;
+  }
+  
+  /* Benefit items hover effects */
+  .benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  .benefit-item:hover .benefit-icon {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button hover effects */
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4) !important;
+  }
+  
+  .btn-outline-primary:hover {
+    background: rgba(108, 99, 255, 0.05) !important;
+    transform: translateY(-3px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .about-content {
+      padding-left: 0 !important;
+      margin-top: 40px;
+    }
+    
+    .image-badge {
+      right: 0 !important;
+    }
+  }
+  </style>
+ </head>
+<body class="index-page">
+  <!-- Header Section -->
+  <header class="header d-flex align-items-center sticky-top" id="header">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      
+      <!-- Logo -->
+      <a class="logo d-flex align-items-center me-auto" href="index.html">
+        <img alt="Rotaract Club Logo" src="assets/img/R2.png" style="width: auto; height: auto;" />
+        <img alt="Rotaract Club Logo" src="images/R_LOGO.png" style="width: auto; height: 200%; max-height: 10vh;" />
+      </a>
+
+      <!-- Navigation Menu -->
+      <nav class="navmenu" id="navmenu">
+        <ul>
+          <!-- Home -->
+          <li>
+            <a class="active" href="index.html">Home</a>
+          </li>
+
+          <!-- Club Finder with Padlock Icon -->
+          <li>
+            <a href="reveal.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none;">
+              Club Finder
+            </a>
+          </li>
+
+          <!-- District Documents -->
+          <li>
+            <a href="documents.html">District Documents</a>
+          </li>
+        
+      <!--<li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>-->
+      <li>
+       <button id="loginTrigger" style="
+                  background: linear-gradient(135deg, #6f00ff, #9f00ff);
+                  color: white;
+                  border: none;
+                  padding: 10px 20px;
+                  border-radius: 30px;
+                  font-weight: 600;
+                  cursor: pointer;
+                  z-index: 10001;
+                ">
+        Login
+       </button>
+      </li>
+     </ul>
+     <i class="mobile-nav-toggle d-xl-none bi bi-list">
+     </i>
+    </nav>
+    <!-- User Info Placeholder -->
+    <div id="userInfo">
+     <div class="user-wrapper">
+      <img alt="User Profile" id="userIcon" src="https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg"/>
+      <div id="userDropdown">
+       <div onclick="goToProfile()">
+        Profile
+       </div>
+       <div id="dashboardOption" onclick="goToDashboard()" style="display: none">
+        Dashboard
+       </div>
+       <div onclick="logoutUser()">
+        Logout
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <!-- Login Modal -->
+  <div id="loginModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+      ">
+   <div style="
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          max-width: 400px;
+          width: 90%;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+          animation: slideUp 0.3s ease;
+        ">
+    <h3 style="
+            text-align: center;
+            color: #6f00ff;
+            font-weight: 700;
+            margin-bottom: 20px;
+          ">
+     Login / Signup
+    </h3>
+    <input id="loginEmail" placeholder="Email" style="
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          " type="email"/>
+    <input id="loginPassword" placeholder="Password" style="
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          " type="password"/>
+    <button onclick="emailLogin()" style="
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #6f00ff;
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            cursor: pointer;
+          ">
+     Login with Email
+    </button>
+    <button onclick="googleLogin()" style="
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #4285f4;
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+          ">
+     Continue with Google
+    </button>
+    <button onclick="closeLogin()" style="
+            margin-top: 15px;
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #999;
+            font-weight: 500;
+            cursor: pointer;
+          ">
+     Cancel
+    </button>
+   </div>
+  </div>
+  <!-- Registration Modal -->
+  <div id="registrationModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #00000099;
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      ">
+   <div style="
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          max-width: 500px;
+          width: 90%;
+        ">
+    <h3 style="text-align: center; font-weight: 700">
+     Welcome
+     <span id="regName">
+     </span>
+     !
+    </h3>
+    <input id="universityId" placeholder="University ID" style="
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          "/>
+    <input id="dob" placeholder="DOB" style="
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          " type="date"/>
+    <select id="gender" style="
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          ">
+     <option value="">
+      Select Gender
+     </option>
+     <option>
+      Male
+     </option>
+     <option>
+      Female
+     </option>
+     <option>
+      Other
+     </option>
+    </select>
+    <input id="phone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" pattern="^\d{10}$" placeholder="Phone Number" required="" style="
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          "/>
+    <label style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+          ">
+     <input id="agreeFee" type="checkbox"/>
+     I will pay ₹499
+    </label>
+    <button onclick="submitRegistration()" style="
+            width: 100%;
+            background: #6f00ff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+          ">
+     Register
+    </button>
+    <button onclick="document.getElementById('registrationModal').style.display='none'" style="
+            width: 100%;
+            background: #ccc;
+            color: black;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+          ">
+     Cancel
+    </button>
+   </div>
+  </div>
+  <!-- Main Content -->
+  <main class="main">
+<!-- Ultra-Premium Rotaract Hero Section -->
+<section id="hero" class="rotaract-hero" style="
+  position: relative;
+  height: 100vh;
+  min-height: 800px;
+  overflow: hidden;
+  background: linear-gradient(152deg, #050e1f 0%, #0f2347 100%);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+">
+  <!-- Premium Glass Morphism Background -->
+  <div class="hero-bg-overlay" style="
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(218, 41, 28, 0.12) 0%, transparent 30%),
+      radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.12) 0%, transparent 30%);
+    backdrop-filter: blur(1px);
+    z-index: -1;
+  "></div>
+
+<!-- Dynamic Particle Background -->
+<div id="particle-canvas" style="
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Put behind content but still visible */
+"></div>
+
+
+  <!-- Floating Rotaract Wheels -->
+<style>
+  /* Wheel-specific animation to avoid conflict */
+  @keyframes floatWheel {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+</style>
+
+<div class="rotaract-wheel-large" style="
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  top: 20%;
+  left: 10%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><path d=&quot;M50 0 L63 37 L100 37 L69 59 L82 96 L50 73 L18 96 L31 59 L0 37 L37 37 Z&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.03)&quot; stroke-width=&quot;0.8&quot;/></svg>');
+  animation: floatWheel 15s ease-in-out infinite;
+  opacity: 0.5;
+"></div>
+
+  <div class="rotaract-wheel-small" style="
+    position: absolute;
+    width: 30vmin;
+    height: 30vmin;
+    bottom: 15%;
+    right: 10%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><path d=\'M50 0 L63 37 L100 37 L69 59 L82 96 L50 73 L18 96 L31 59 L0 37 L37 37 Z\' fill=\'none\' stroke=\'rgba(255,255,255,0.1)\' stroke-width=\'0.8\'/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: float 12s ease-in-out infinite, spin 40s linear infinite;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
+    mix-blend-mode: overlay;
+"></div>
+
+  <!-- Content Container -->
+  <div class="container" style="position: relative; z-index: 3;">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <!-- Premium District Badge -->
+        <div class="district-badge" style="
+          display: inline-flex;
+          align-items: center;
+          margin-bottom: 2.5rem;
+          padding: 0.8rem 1.8rem;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(12px);
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          animation: fadeIn 0.8s ease-out;
+        ">
+          <div style="
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            background: linear-gradient(135deg, #da291c 0%, #ff8c00 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+            <i class="fas fa-star" style="font-size: 10px; color: white;"></i>
+          </div>
+          <span style="
+            font-weight: 600;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ffffff, #eeeeee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          "> Rotaract Club of Delhi Nexus</span>
+        </div>
+
+        <!-- Premium Main Heading -->
+        <h1 class="hero-heading" style="
+          font-size: 4.5rem;
+          font-weight: 800;
+          line-height: 1.1;
+          margin-bottom: 1.8rem;
+          letter-spacing: -1px;
+          animation: slideUp 0.8s ease-out 0.2s both;
+        ">
+          <span style="
+            display: block;
+            background: linear-gradient(90deg, #ffd700, #ffb700, #ff9500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+          ">
+            <span style="
+              position: absolute;
+              bottom: -10px;
+              left: 0;
+              width: 100%;
+              height: 3px;
+              background: linear-gradient(90deg, #ffd700, #ff8c00);
+              border-radius: 3px;
+            "></span>
+            Elevate Through Service
+          </span>
+          <span style="
+            display: block;
+            color: white;
+            font-weight: 300;
+            font-size: 3.8rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+          ">Leadership That Inspires Change</span>
+        </h1>
+
+        <!-- Premium Description -->
+        <p class="hero-description" style="
+          font-size: 1.4rem;
+          line-height: 1.7;
+          margin-bottom: 3rem;
+          color: rgba(255, 255, 255, 0.9);
+          max-width: 600px;
+          position: relative;
+          padding-left: 2rem;
+          animation: slideUp 0.8s ease-out 0.4s both;
+        ">
+          <span style="
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #da291c, #ff8c00);
+            border-radius: 3px;
+          "></span>
+          Join the premier network of young leaders committed to creating sustainable impact through innovative service projects and professional development.
+        </p>
+
+        <!-- Premium CTA Buttons -->
+        <div class="hero-actions" style="
+          display: flex;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+          animation: slideUp 0.8s ease-out 0.6s both;
+        ">
+          <a href="reveal.html" class="btn-primary" style="
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #da291c 0%, #c42419 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 15px 30px rgba(218, 41, 28, 0.3),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            border: none;
+            position: relative;
+            overflow: hidden;
+          ">
+            <span style="
+              position: relative;
+              z-index: 2;
+              display: flex;
+              align-items: center;
+            ">
+              Join Our Movement
+              <i class="fas fa-arrow-right ms-3" style="transition: transform 0.3s ease;"></i>
+            </span>
+            <span style="
+              position: absolute;
+              top: -50%;
+              left: -50%;
+              width: 200%;
+              height: 200%;
+              background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+              transform: rotate(30deg);
+              transition: all 0.6s ease;
+              z-index: 1;
+            "></span>
+          </a>
+          
+          <!-- Watch Our Story Button -->
+<a href="#" id="watch-story-btn" class="btn-secondary" style="
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+">
+    <i class="fas fa-play-circle me-3"></i>
+    Watch Our Story
+</a>
+
+<!-- Coming Soon Pop-up (reuse same as before) -->
+<div id="coming-soon-popup2" style="
+    position: fixed;
+    bottom: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 80px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.5), 0 0 80px rgba(236, 60, 165, 0.4);
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.5s ease;
+">
+  <h2 style="
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #6c63ff, #ec3ca5, #00f0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.2;
+  ">
+    Coming<br>Soon
+  </h2>
+</div>
+
+<script>
+const watchStoryBtn = document.getElementById('watch-story-btn');
+const popup = document.getElementById('coming-soon-popup2');
+
+watchStoryBtn.addEventListener('click', function(e) {
+    e.preventDefault(); // prevent default link behavior
+    popup.style.transform = 'translate(-50%, -50%) scale(1)';
+    popup.style.opacity = '1';
+    
+    // hide after 3 seconds
+    setTimeout(() => {
+        popup.style.transform = 'translate(-50%, -50%) scale(0)';
+        popup.style.opacity = '0';
+    }, 3000);
+});
+</script>
+
+        </div>
+      </div>
+
+      <!-- Ultra-Premium Media Container -->
+      <div class="col-lg-5 d-none d-lg-block" style="animation: fadeInRight 0.8s ease-out 0.8s both;">
+        <div class="media-container" style="
+          position: relative;
+          padding-left: 4rem;
+          perspective: 1200px;
+        ">
+          <div class="premium-card" style="
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.05);
+            transform: perspective(1200px) rotateY(-12deg) rotateX(5deg);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 550px;
+            background: linear-gradient(145deg, #0a1a3a 0%, #1a3a6e 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          ">
+            <!-- Premium Card Content -->
+            <div class="card-content" style="
+              position: relative;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              padding: 3rem;
+              text-align: center;
+              z-index: 2;
+            ">
+              <!-- Rotaract Logo Animation -->
+              <div class="logo-container" style="
+                width: 150px;
+                height: 150px;
+                margin-bottom: 2.5rem;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              ">
+                <div class="logo-backdrop" style="
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(255, 255, 255, 0.1);
+                  backdrop-filter: blur(8px);
+                  border-radius: 50%;
+                  border: 1px solid rgba(255, 255, 255, 0.15);
+                  animation: pulse 6s ease-in-out infinite;
+                "></div>
+                <img src="assets/img/R.png" 
+                     alt="Rotaract Logo" 
+                     style="
+                      width: 100px;
+                      height: 100px;
+                      z-index: 2;
+                      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+                      animation: float 6s ease-in-out infinite;
+                     ">
+              </div>
+              
+              <h3 style="
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+                font-weight: 700;
+                background: linear-gradient(90deg, #ffffff, #eeeeee);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+              ">Rotaract District 3011</h3>
+              
+              <p style="
+                font-size: 1.1rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 2.5rem;
+                line-height: 1.7;
+              ">A global network of young leaders creating positive change through service and fellowship</p>
+              
+              <div class="stats-container" style="
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                width: 100%;
+              ">
+                <div class="stat-item" style="
+                  text-align: center;
+                  flex: 1;
+                ">
+                  <div class="stat-value" style="
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                    background: linear-gradient(90deg, #ffd700, #ffb700);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                  ">70+</div>
+                  <div class="stat-label" style="
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: rgba(255, 255, 255, 0.7);
+                  ">Clubs</div>
+                </div>
+                
+                <div class="stat-item" style="
+                  text-align: center;
+                  flex: 1;
+                ">
+                  <div class="stat-value" style="
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                    background: linear-gradient(90deg, #ffd700, #ffb700);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                  ">2500+</div>
+                  <div class="stat-label" style="
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: rgba(255, 255, 255, 0.7);
+                  ">Members</div>
+                </div>
+                
+                <div class="stat-item" style="
+                  text-align: center;
+                  flex: 1;
+                ">
+                  <div class="stat-value" style="
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                    background: linear-gradient(90deg, #ffd700, #ffb700);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                  ">10+</div>
+                  <div class="stat-label" style="
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: rgba(255, 255, 255, 0.7);
+                  ">Years</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card Overlay Effects -->
+            <div class="card-overlay" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(45deg, rgba(218, 41, 28, 0.1) 0%, rgba(10, 26, 58, 0.7) 100%);
+              z-index: 1;
+            "></div>
+            
+            <!-- Card Glow Effect -->
+            <div class="card-glow" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.15) 0%, transparent 50%);
+              z-index: 0;
+            "></div>
+          </div>
+          
+          <!-- Decorative Floating Elements -->
+          <div class="decorative-dots" style="
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            z-index: -1;
+            opacity: 0.7;
+          ">
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 10px;
+              height: 10px;
+              background: #da291c;
+              border-radius: 50%;
+              box-shadow: 
+                40px 30px 0 #da291c,
+                80px 60px 0 #ff8c00,
+                120px 90px 0 #ffd700,
+                160px 120px 0 #da291c;
+              opacity: 0.5;
+              animation: pulse 4s ease-in-out infinite;
+            "></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Scrolling Indicator -->
+  <div class="scroll-indicator" style="
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    color: white;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  ">
+    <span style="
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    ">Discover Our Impact</span>
+    <div style="
+      width: 30px;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      padding-top: 8px;
+    ">
+      <div style="
+        width: 6px;
+        height: 10px;
+        background: white;
+        border-radius: 3px;
+        animation: scrollIndicator 2s infinite;
+      "></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes floatReverse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes fadeInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-10px) translateX(-50%); }
+    60% { transform: translateY(-5px) translateX(-50%); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+  
+  @keyframes scrollIndicator {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(20px); opacity: 0; }
+  }
+
+  /* Hover Effects */
+  .btn-primary:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(218, 41, 28, 0.5),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-primary:hover span:last-child {
+    transform: rotate(30deg) translateX(100%);
+  }
+  
+  .btn-primary:hover i {
+    transform: translateX(8px);
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  }
+  
+  .premium-card:hover {
+    transform: perspective(1200px) rotateY(-8deg) rotateX(3deg) scale(1.02);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1200px) {
+    .hero-heading {
+      font-size: 3.8rem !important;
+    }
+    
+    .hero-heading span {
+      font-size: 3.2rem !important;
+    }
+    
+    .premium-card {
+      height: 500px !important;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-heading {
+      font-size: 3rem !important;
+    }
+    
+    .hero-heading span {
+      font-size: 2.5rem !important;
+    }
+    
+    .hero-description {
+      font-size: 1.2rem !important;
+      padding-left: 1.5rem !important;
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+      gap: 1rem !important;
+    }
+    
+    .btn-primary, .btn-secondary {
+      padding: 1rem 2rem !important;
+      justify-content: center;
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-heading {
+      font-size: 2.5rem !important;
+    }
+    
+    .hero-heading span {
+      font-size: 2rem !important;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem !important;
+      padding-left: 1rem !important;
+    }
+    
+    .district-badge {
+      padding: 0.6rem 1.2rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .hero-heading {
+      font-size: 2rem !important;
+    }
+    
+    .hero-heading span {
+      font-size: 1.6rem !important;
+    }
+    
+    .hero-description {
+      font-size: 1rem !important;
+    }
+    
+    .btn-primary, .btn-secondary {
+      font-size: 0.95rem !important;
+    }
+  }
+</style>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Particle.js Library -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+  // Initialize particle.js background
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('particle-canvas')) {
+      particlesJS('particle-canvas', {
+        "particles": {
+          "number": {
+            "value": 60,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            }
+          },
+          "opacity": {
+            "value": 0.3,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 2,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.2,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": true,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 0.5
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    }
+
+    // Add scroll functionality to indicator
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+      window.scrollBy({
+        top: window.innerHeight - 100,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+<!-- About Section -->
+<section id="about" style="position: relative; padding: 100px 0; overflow: hidden; background: #fff;">
+  <!-- Floating Background Elements -->
+  <div style="position: absolute; top: -50px; left: -50px; width: 200px; height: 200px; background: rgba(108, 99, 255, 0.15); border-radius: 50%; animation: float1 8s ease-in-out infinite;"></div>
+  <div style="position: absolute; bottom: -60px; right: -60px; width: 250px; height: 250px; background: rgba(236, 60, 165, 0.15); border-radius: 50%; animation: float2 10s ease-in-out infinite;"></div>
+
+  <div class="container" style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+    
+    <!-- Left Content -->
+    <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+      <span style="display: inline-block; color: #6c63ff; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+        About Us
+      </span>
+      <h2 style="font-size: 2.5rem; font-weight: 800; line-height: 1.3; margin-bottom: 20px; background: linear-gradient(90deg, #6c63ff, #ec3ca5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientMove 5s ease infinite;">
+        About Rotaract District Organisation 3011
+      </h2>
+      <p style="font-size: 1.1rem; color: #4a5568; line-height: 1.7; margin-bottom: 25px;">
+        Rotaract District 3011 is dedicated to fostering leadership and community service among young professionals and students. We focus on impactful projects that address local and global issues, creating positive change in our communities.
+      </p>
+      <p style="font-size: 1.1rem; color: #4a5568; line-height: 1.7; margin-bottom: 30px;">
+        Our district supports initiatives that promote personal development, professional growth, and community engagement. Join us in making a difference through diverse activities and projects.
+      </p>
+      <a href="#" style="display: inline-block; padding: 14px 30px; background: linear-gradient(135deg, #6c63ff, #ec3ca5); color: #fff; font-weight: 600; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4); transition: all 0.3s ease;">
+        About Us →
+      </a>
+    </div>
+
+    <!-- Right Map with Interactive 3D Drone Effect -->
+    <div style="
+      flex: 1;
+      min-width: 300px;
+      height: 400px;
+      position: relative;
+      perspective: 1000px;
+    " id="mapContainer">
+      <!-- Cloud Overlay -->
+      <div style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxmaWx0ZXIgaWQ9Im5vaXNlIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjA1IiBudW1PY3RhdmVzPSI1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+CiAgICA8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMSAwIDAgMCAwIDAgMSAwIDAgMCAwIDAgMSAwIDAgMCAwIDAgMSAwIi8+CiAgPC9maWx0ZXI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4yIi8+Cjwvc3ZnPg==') repeat;
+        background-size: 200px;
+        opacity: 0.3;
+        animation: cloudDrift 40s linear infinite;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: 15px;
+      "></div>
+
+      <!-- Map Image with fallback -->
+      <img src="assets/img/45681f0c-2ce8-4468-b425-758d6143fc92.png" 
+           onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/India_map.svg/1200px-India_map.svg.png'"
+           id="droneMap"
+           style="
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform: rotateX(15deg) rotateY(0deg);
+            transition: transform 0.5s ease-out;
+            position: relative;
+            z-index: 1;
+            transform-style: preserve-3d;
+           ">
+      <!-- Source Text Below Map -->
+      <p style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: #6c63ff; font-style: italic; z-index: 3;">
+        *Source Rotary 3011
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 20px); }
+  }
+  
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, -20px); }
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes cloudDrift {
+    from { background-position: 0 0; }
+    to { background-position: -1000px 0; }
+  }
+  
+  @keyframes droneFlyIn {
+    0% { 
+      transform: translateY(-200px) translateZ(-800px) rotateX(70deg) scale(0.4); 
+      opacity: 0; 
+    }
+    50% { 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateY(0) translateZ(0) rotateX(15deg) rotateY(0deg) scale(1); 
+      opacity: 1; 
+    }
+  }
+</style>
+
+<script>
+  const originalTransform = 'rotateX(15deg) rotateY(0deg)';
+  
+  document.getElementById('mapContainer').addEventListener('mousemove', function(e) {
+    const map = document.getElementById('droneMap');
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const angleX = (y - centerY) / 20;
+    const angleY = (centerX - x) / 20;
+    map.style.transform = `rotateX(${15 + angleX}deg) rotateY(${angleY}deg)`;
+  });
+
+  document.getElementById('mapContainer').addEventListener('mouseleave', function() {
+    const map = document.getElementById('droneMap');
+    map.style.transform = originalTransform;
+  });
+
+  window.addEventListener('load', function() {
+    const map = document.getElementById('droneMap');
+    map.style.transform = 'translateY(-200px) translateZ(-800px) rotateX(70deg) scale(0.4)';
+    map.style.opacity = '0';
+    map.style.animation = 'droneFlyIn 2s ease-out forwards';
+    
+    setTimeout(() => {
+      map.style.animation = '';
+      map.style.transform = originalTransform;
+      map.style.opacity = '1';
+    }, 2000);
+  });
+</script>
+
+
+   <!-- Enhanced About Section -->
+   <section class="about-section" id="about" style="padding: 100px 0; position: relative; overflow: hidden;">
+    <!-- Floating background elements -->
+    <div class="about-bg-elements">
+     <div class="floating-circle circle-1">
+     </div>
+     <div class="floating-circle circle-2">
+     </div>
+     <div class="floating-circle circle-3">
+     </div>
+    </div>
+    <div class="container">
+     <div class="row align-items-center g-5">
+      <!-- Image Column with Parallax and Hover Effect -->
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+       <div class="about-image-wrapper" style="position: relative;">
+        <div class="image-frame" style="
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(108, 99, 255, 0.3);
+            border-radius: 15px;
+            z-index: -1;
+            transition: all 0.5s ease;
+          ">
+        </div>
+        <img alt="About Rotaract" class="img-fluid about-image rounded-4 shadow-lg" src="assets/img/newabout2.JPG" style="
+              width: 100%;
+              height: auto;
+              object-fit: cover;
+              border-radius: 15px;
+              transform-style: preserve-3d;
+              transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+              box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            "/>
+        <div class="image-overlay" style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.3) 0%, rgba(236, 60, 165, 0.2) 100%);
+            border-radius: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+          ">
+        </div>
+        <div class="image-badge" style="
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: linear-gradient(135deg, #6c63ff 0%, #ec3ca5 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
+            transform: rotate(-5deg);
+            z-index: 2;
+          ">
+         Since 2015
+        </div>
+       </div>
+      </div>
+      <!-- Content Column with Enhanced Styling -->
+     <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+  <div class="about-content ps-lg-5">
+    <span class="section-subtitle" style="
+        display: inline-block;
+        color: #6c63ff;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+      ">
+      Why Join Us
+    </span>
+    <h2 class="section-title" style="
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 20px;
+        line-height: 1.3;
+      ">
+      Why Become Part of
+      <span style="color: #6c63ff;">
+        RID 3011?
+      </span>
+    </h2>
+    <p class="section-intro" style="
+        font-size: 1.1rem;
+        color: #4a5568;
+        margin-bottom: 30px;
+        line-height: 1.7;
+        font-style: italic;
+      ">
+      Joining Rotary International District 3011 is more than just becoming a member of a club; it’s an opportunity to be part of a transformative community dedicated to making a difference.
+    </p>
+    <ul class="benefits-list" style="list-style: none; padding: 0; margin-bottom: 30px;">
+      <li class="benefit-item" style="
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border-left: 4px solid #6c63ff;
+          ">
+        <div class="d-flex align-items-center">
+          <div class="benefit-icon" style="
+                width: 40px;
+                height: 40px;
+                background: rgba(108, 99, 255, 0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                color: #6c63ff;
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+              ">
+            <i class="bi bi-people-fill"></i>
+          </div>
+          
+          
+            Meaningful Service – Impactful community projects & sustainable development
+          </span>
+        </div>
+      </li>
+      <li class="benefit-item" style="
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border-left: 4px solid #f6ad55;
+          ">
+        <div class="d-flex align-items-center">
+          <div class="benefit-icon" style="
+                width: 40px;
+                height: 40px;
+                background: rgba(246, 173, 85, 0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                color: #f6ad55;
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+              ">
+            <i class="bi bi-lightbulb-fill"></i>
+          </div>
+          <span style="
+                font-weight: 500;
+                color: #2d3748;
+                transition: all 0.3s ease;
+              ">
+            Leadership Development – Specialized programs & workshops
+          </span>
+        </div>
+      </li>
+      <li class="benefit-item" style="
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border-left: 4px solid #48bb78;
+          ">
+        <div class="d-flex align-items-center">
+          <div class="benefit-icon" style="
+                width: 40px;
+                height: 40px;
+                background: rgba(72, 187, 120, 0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                color: #48bb78;
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+              ">
+            <i class="bi bi-globe"></i>
+          </div>
+          <span style="
+                font-weight: 500;
+                color: #2d3748;
+                transition: all 0.3s ease;
+              ">
+            Global Opportunities – Cultural exchanges & international partnerships
+          </span>
+        </div>
+      </li>
+      <li class="benefit-item" style="
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4299e1;
+          ">
+        <div class="d-flex align-items-center">
+          <div class="benefit-icon" style="
+                width: 40px;
+                height: 40px;
+                background: rgba(66, 153, 225, 0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                color: #4299e1;
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+              ">
+            <i class="bi bi-emoji-smile-fill"></i>
+          </div>
+          <span style="
+                font-weight: 500;
+                color: #2d3748;
+                transition: all 0.3s ease;
+              ">
+            Engaging Club Experience – Fun, impactful activities & literacy initiatives
+          </span>
+        </div>
+      </li>
+    </ul>
+   <!-- Watch Video Button Section -->
+<div class="d-flex flex-wrap gap-3">
+  <a class="btn btn-primary btn-lg rounded-pill px-4 py-3" href="reveal.html" style="
+        background: linear-gradient(135deg, #6c63ff 0%, #ec3ca5 100%);
+        border: none;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        ">
+    <span>Join the Movement!</span>
+    <i class="bi bi-arrow-right ms-2"></i>
+  </a>
+  <a class="btn btn-outline-primary btn-lg rounded-pill px-4 py-3" id="watch-video-btn" style="
+        border: 2px solid #6c63ff;
+        color: #6c63ff;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background: transparent;
+        ">
+    <i class="bi bi-play-circle me-2"></i>
+    <span>Watch Video</span>
+  </a>
+</div>
+
+<!-- Coming Soon Pop-up for Watch Video -->
+<div id="coming-soon-popup-video" style="
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 80px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.5), 0 0 80px rgba(236, 60, 165, 0.4);
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.5s ease;
+">
+  <h2 style="
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #6c63ff, #ec3ca5, #00f0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.2;
+  ">
+    Coming<br>Soon
+  </h2>
+</div>
+
+<script>
+const watchBtn = document.getElementById('watch-video-btn');
+const popupVideo = document.getElementById('coming-soon-popup-video');
+
+watchBtn.addEventListener('click', function(e) {
+    e.preventDefault(); // prevent default link behavior
+    popupVideo.style.transform = 'translate(-50%, -50%) scale(1)';
+    popupVideo.style.opacity = '1';
+    
+    // hide after 3 seconds
+    setTimeout(() => {
+        popupVideo.style.transform = 'translate(-50%, -50%) scale(0)';
+        popupVideo.style.opacity = '0';
+    }, 3000);
+});
+</script>
+</div></div>
+<!-- Counts Section -->
+<section class="section counts light-background" id="counts">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="stats-item text-center w-100 h-100">
+          <div class="counter-wrapper">
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="500" data-purecounter-start="0"></span><span class="plus-sign">+</span>
+          </div>
+          <p>Fellowship Given</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stats-item text-center w-100 h-100">
+          <div class="counter-wrapper">
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="100" data-purecounter-start="0"></span><span class="plus-sign">+</span>
+          </div>
+          <p>Children Educated</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stats-item text-center w-100 h-100">
+          <div class="counter-wrapper">
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="20" data-purecounter-start="0"></span><span class="plus-sign">+</span>
+          </div>
+          <p>Collaborations</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stats-item text-center w-100 h-100">
+          <div class="counter-wrapper">
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="50" data-purecounter-start="0"></span><span class="plus-sign">+</span>
+          </div>
+          <p>Service Projects</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Align number and plus on same line, paragraph below */
+.stats-item {
+  text-align: center;
+}
+
+.counter-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.plus-sign {
+  color: #6c63ff;
+}
+
+/* Paragraph stays below the counter */
+.stats-item p {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+</style>
+
+   <!-- Why Us Section - Premium Redesign -->
+   <section class="section why-us py-6 position-relative overflow-hidden" id="why-us" style="background: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);">
+    <!-- 3D Floating Elements -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" id="cucrc-3d-container">
+    </div>
+    <!-- Animated Wave Background -->
+    <div class="position-absolute bottom-0 start-0 w-100" style="z-index: 1;">
+     <svg preserveaspectratio="none" viewbox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" fill="rgba(255,255,255,0.8)" fill-opacity="1">
+      </path>
+     </svg>
+    </div>
+    <div class="container position-relative" style="z-index: 2;">
+     <div class="row g-5 align-items-center">
+      <!-- Image Column with 3D Perspective -->
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+       <div class="position-relative rounded-4 overflow-hidden shadow-lg" style="height: 500px; transform-style: preserve-3d; perspective: 1000px;">
+        <img alt="CUCRC Team in Action" class="img-fluid h-100 w-100 object-fit-cover" id="cucrc-image-3d" src="assets/img/WhatsApp Image 2025-08-16 at 01.34.34_9ff547ba.jpg";ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+        <div class="position-absolute bottom-0 start-0 p-4 text-white" style="background: linear-gradient(to top, rgba(42,67,101,0.9), transparent); width: 100%;">
+         <h3 class="mb-0 font-serif fs-2">
+          Our RID 3011 Family
+         </h3>
+        </div>
+        <!-- 3D Badge Element -->
+        <div class="position-absolute top-0 end-0 m-4" id="cucrc-badge-3d">
+         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 80px; height: 80px; transform: translateZ(20px);">
+          <i class="fas fa-users fs-3">
+          </i>
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- Content Column with Enhanced Typography -->
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+       <div class="ps-lg-5">
+        <h2 class="display-4 fw-bold mb-4 font-serif" style="color: #2a4365; text-shadow: 1px 1px 3px rgba(0,0,0,0.1);">
+         What We As
+         <span class="text-primary">
+          RID 3011
+         </span>
+         Family Do?
+        </h2>
+        <div class="feature-card glass-morphism p-4 rounded-4 mb-4" style="--hover-color: #3182ce">
+         <div class="d-flex align-items-start">
+          <div class="me-4">
+           <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+            <i class="fas fa-hands-helping fs-4">
+            </i>
+           </div>
+          </div>
+          <div>
+           <h4 class="h4 font-serif mb-2" style="color: #2a4365;">
+            Service With Global Impact
+           </h4>
+           <p class="mb-0" style="color: #4a5568; line-height: 1.7;">
+               Collaborating across 35,000+ clubs in 200+ countries, we create meaningful change through compassionate service and sustainable solutions.
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="feature-card glass-morphism p-4 rounded-4 mb-4" style="--hover-color: #4299e1">
+         <div class="d-flex align-items-start">
+          <div class="me-4">
+           <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+            <i class="fas fa-globe fs-4">
+            </i>
+           </div>
+          </div>
+          <div>
+           <h4 class="h4 font-serif mb-2" style="color: #2a4365;">
+            Diverse Leadership Network
+           </h4>
+           <p class="mb-0" style="color: #4a5568; line-height: 1.7;">
+            A global community of changemakers united by shared values of integrity, diversity, and service above self.
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="feature-card glass-morphism p-4 rounded-4 mb-4" style="--hover-color: #63b3ed">
+         <div class="d-flex align-items-start">
+          <div class="me-4">
+           <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+            <i class="fas fa-lightbulb fs-4">
+            </i>
+           </div>
+          </div>
+          <div>
+           <h4 class="h4 font-serif mb-2" style="color: #2a4365;">
+            Strategic Focus Areas
+           </h4>
+           <ul class="list-unstyled" style="color: #4a5568;">
+            <li class="mb-2 d-flex align-items-start">
+             <i class="fas fa-check-circle text-primary mt-1 me-2">
+             </i>
+             <span>
+              Promoting peace and conflict resolution
+             </span>
+            </li>
+            <li class="mb-2 d-flex align-items-start">
+             <i class="fas fa-check-circle text-primary mt-1 me-2">
+             </i>
+             <span>
+              Disease prevention and healthcare access
+             </span>
+            </li>
+            <li class="mb-2 d-flex align-items-start">
+             <i class="fas fa-check-circle text-primary mt-1 me-2">
+             </i>
+             <span>
+              Education and literacy programs
+             </span>
+            </li>
+            <li class="d-flex align-items-start">
+             <i class="fas fa-check-circle text-primary mt-1 me-2">
+             </i>
+             <span>
+              Economic and community development
+             </span>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+        <div class="mt-5" data-aos="zoom-in" data-aos-delay="200">
+         <a class="btn btn-primary px-5 py-3 rounded-pill fw-bold fs-5 position-relative overflow-hidden border-0" href="#" style="background: linear-gradient(135deg, #2a4365 0%, #3182ce 100%); transition: all 0.5s ease;">
+          <span class="position-relative z-index-1">
+           Become Part of Our Family
+          </span><a href="reveal.html">
+          <span class="position-absolute top-0 start-0 w-100 h-100 bg-white opacity-0 hover-animate">
+          </span></a>
+          <i class="fas fa-arrow-right ms-3 z-index-1">
+          </i>
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Features Section -->
+   <section class="features section" id="features">
+    <div class="container section-title" data-aos="fade-up">
+     <h2>
+      Work
+     </h2>
+     <p>
+      How We Work?
+     </p>
+    </div>
+    <div class="container">
+     <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+       <div class="features-item text-center" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotate(-1deg)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" style="
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 15px;
+                  transition: transform 0.4s ease, box-shadow 0.4s ease;
+                  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                ">
+        <i class="bi bi-flag" onmouseout="this.style.transform='none';" onmouseover="this.style.transform='rotate(10deg) scale(1.2)';" style="
+                    color: #ef476f;
+                    font-size: 2rem;
+                    transition: transform 0.4s ease;
+                  ">
+        </i>
+        <h3 class="mt-2">
+         Project Launch
+        </h3>
+        <p class="text-muted">
+         Firstly,
+         <span class="text-danger">
+          a project is launched
+         </span>
+         based
+                  on the social problems in the society.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+       <div class="features-item text-center" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotate(1deg)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" style="
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 15px;
+                  transition: transform 0.4s ease, box-shadow 0.4s ease;
+                  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                ">
+        <i class="bi bi-search" onmouseout="this.style.transform='none';" onmouseover="this.style.transform='rotate(10deg) scale(1.2)';" style="
+                    color: #5578ff;
+                    font-size: 2rem;
+                    transition: transform 0.4s ease;
+                  ">
+        </i>
+        <h3 class="mt-2">
+         Survey Conducted
+        </h3>
+        <p class="text-muted">
+         <span class="text-primary">
+          A survey is conducted
+         </span>
+         in the
+                  villages and urban areas in the vicinity.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+       <div class="features-item text-center" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotate(-1deg)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" style="
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 15px;
+                  transition: transform 0.4s ease, box-shadow 0.4s ease;
+                  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                ">
+        <i class="bi bi-people" onmouseout="this.style.transform='none';" onmouseover="this.style.transform='rotate(10deg) scale(1.2)';" style="
+                    color: #e80368;
+                    font-size: 2rem;
+                    transition: transform 0.4s ease;
+                  ">
+        </i>
+        <h3 class="mt-2">
+         Volunteer Teams
+        </h3>
+        <p class="text-muted">
+         We create separate
+         <span class="text-danger">
+          volunteer teams
+         </span>
+         for each of
+                  the village.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+       <div class="features-item text-center" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotate(1deg)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" style="
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 15px;
+                  transition: transform 0.4s ease, box-shadow 0.4s ease;
+                  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                ">
+        <i class="bi bi-megaphone" onmouseout="this.style.transform='none';" onmouseover="this.style.transform='rotate(10deg) scale(1.2)';" style="
+                    color: #e361ff;
+                    font-size: 2rem;
+                    transition: transform 0.4s ease;
+                  ">
+        </i>
+        <h3 class="mt-2">
+         Community Mobilisation
+        </h3>
+        <p class="text-muted">
+         <span class="text-danger">
+          Communities are mobilised
+         </span>
+         and
+                  awareness is kindled.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+       <div class="features-item text-center" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotate(-1deg)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" style="
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 15px;
+                  transition: transform 0.4s ease, box-shadow 0.4s ease;
+                  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                ">
+        <i class="bi bi-bullseye" onmouseout="this.style.transform='none';" onmouseover="this.style.transform='rotate(10deg) scale(1.2)';" style="
+                    color: #47aeff;
+                    font-size: 2rem;
+                    transition: transform 0.4s ease;
+                  ">
+        </i>
+        <h3 class="mt-2">
+         Campaign &amp; Execution
+        </h3>
+        <p class="text-muted">
+         <span class="text-primary">
+          Campaigns
+         </span>
+         are launched and
+         <span class="text-primary">
+          projects
+         </span>
+         are executed.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+       <div class="features-item text-center" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotate(1deg)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';" style="
+                  background: #fff;
+                  padding: 20px;
+                  border-radius: 15px;
+                  transition: transform 0.4s ease, box-shadow 0.4s ease;
+                  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                ">
+        <i class="bi bi-chat-square-quote" onmouseout="this.style.transform='none';" onmouseover="this.style.transform='rotate(10deg) scale(1.2)';" style="
+                    color: #ffa76e;
+                    font-size: 2rem;
+                    transition: transform 0.4s ease;
+                  ">
+        </i>
+        <h3 class="mt-2">
+         Feedback &amp; Improvement
+        </h3>
+        <p class="text-muted">
+         <span class="text-danger">
+          Feedback
+         </span>
+         is taken to ensure
+                  improvisation.
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Services Section -->
+<section class="services-section" id="services" style="
+  position: relative;
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  overflow: hidden;
+">
+  <!-- 3D Background Elements -->
+  <div class="bg-element" style="
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 200px;
+    height: 200px;
+    background: rgba(108, 99, 255, 0.1);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(30px);
+    transform: rotate(45deg);
+    z-index: 0;
+  "></div>
+  <div class="bg-element" style="
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 300px;
+    height: 300px;
+    background: rgba(236, 60, 165, 0.1);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    filter: blur(40px);
+    transform: rotate(-20deg);
+    z-index: 0;
+  "></div>
+
+  <div class="container" style="position: relative; z-index: 1;">
+    <div class="section-header" data-aos="fade-up" style="
+      text-align: center;
+      margin-bottom: 60px;
+    ">
+      <h2 style="
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        background: linear-gradient(90deg, #6c63ff, #ec3ca5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      ">Our Services</h2>
+      <p style="
+        font-size: 1.1rem;
+        color: #4a5568;
+        max-width: 700px;
+        margin: 0 auto;
+      ">Discover how we make a difference through our core service areas</p>
+    </div>
+
+    <div class="services-grid" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    ">
+      <!-- Service Card 1 - Community -->
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100" style="
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-style: preserve-3d;
+        background: white;
+        height: 100%;
+      ">
+        <div class="card-bg" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, #6c63ff 0%, #8b83ff 100%);
+          opacity: 0.1;
+          z-index: 1;
+        "></div>
+        <div class="card-3d-effect" style="
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          width: 150px;
+          height: 150px;
+          background: rgba(108, 99, 255, 0.2);
+          border-radius: 50%;
+          filter: blur(30px);
+          z-index: 0;
+        "></div>
+        <div class="card-content" style="
+          position: relative;
+          z-index: 2;
+          padding: 30px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        ">
+          <div class="card-icon" style="
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6c63ff, #8b83ff);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+            transform: translateZ(30px);
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 style="
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d3748;
+          ">Community</h3>
+          <p style="
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+          ">We are committed to taking on some of the world's most pressing challenges through local community initiatives.</p>
+          <a href="#" class="card-link" style="
+            display: inline-flex;
+            align-items: center;
+            color: #6c63ff;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+          ">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Card 2 - International -->
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200" style="
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-style: preserve-3d;
+        background: white;
+        height: 100%;
+      ">
+        <div class="card-bg" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, #ec3ca5 0%, #ff6b9e 100%);
+          opacity: 0.1;
+          z-index: 1;
+        "></div>
+        <div class="card-3d-effect" style="
+          position: absolute;
+          bottom: -50px;
+          left: -50px;
+          width: 150px;
+          height: 150px;
+          background: rgba(236, 60, 165, 0.2);
+          border-radius: 50%;
+          filter: blur(30px);
+          z-index: 0;
+        "></div>
+        <div class="card-content" style="
+          position: relative;
+          z-index: 2;
+          padding: 30px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        ">
+          <div class="card-icon" style="
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ec3ca5, #ff6b9e);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(236, 60, 165, 0.3);
+            transform: translateZ(30px);
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3 style="
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d3748;
+          ">International</h3>
+          <p style="
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+          ">Expanding our impact globally to address international challenges and foster cross-cultural understanding.</p>
+          <a href="#" class="card-link" style="
+            display: inline-flex;
+            align-items: center;
+            color: #ec3ca5;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+          ">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service Card 3 - Vocational -->
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300" style="
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform-style: preserve-3d;
+        background: white;
+        height: 100%;
+      ">
+        <div class="card-bg" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, #4fbbff 0%, #3a7bd5 100%);
+          opacity: 0.1;
+          z-index: 1;
+        "></div>
+        <div class="card-3d-effect" style="
+          position: absolute;
+          top: -30px;
+          right: -30px;
+          width: 100px;
+          height: 100px;
+          background: rgba(79, 187, 255, 0.2);
+          border-radius: 50%;
+          filter: blur(30px);
+          z-index: 0;
+        "></div>
+        <div class="card-3d-effect" style="
+          position: absolute;
+          bottom: -30px;
+          left: -30px;
+          width: 100px;
+          height: 100px;
+          background: rgba(58, 123, 213, 0.2);
+          border-radius: 50%;
+          filter: blur(30px);
+          z-index: 0;
+        "></div>
+        <div class="card-content" style="
+          position: relative;
+          z-index: 2;
+          padding: 30px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        ">
+          <div class="card-icon" style="
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4fbbff, #3a7bd5);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(79, 187, 255, 0.3);
+            transform: translateZ(30px);
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
+              <path d="M14.05 6A5 5 0 0 1 18 10"></path>
+            </svg>
+          </div>
+          <h3 style="
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d3748;
+          ">Vocational</h3>
+          <p style="
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+          ">Empowering individuals through skill development and professional growth opportunities.</p>
+          <a href="#" class="card-link" style="
+            display: inline-flex;
+            align-items: center;
+            color: #3a7bd5;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+          ">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+     <!-- Service Card 4 - Club Services -->
+<div class="service-card" data-aos="zoom-in" data-aos-delay="400" style="
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  background: white;
+  height: 100%;
+">
+  <div class="card-bg" style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #43cea2 0%, #185a9d 100%);
+    opacity: 0.1;
+    z-index: 1;
+  "></div>
+  <div class="card-3d-effect" style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: rgba(24, 90, 157, 0.1);
+    border-radius: 50%;
+    filter: blur(40px);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  "></div>
+  <div class="card-content" style="
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  ">
+    <div class="card-icon" style="
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 20px rgba(24, 90, 157, 0.3);
+      transform: translateZ(30px);
+    ">
+      <!-- Updated Icon: Club / Event -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L15 8H9L12 2Z"></path> <!-- Example: a small flag for club/events -->
+        <path d="M12 8V22"></path>
+        <path d="M5 22H19"></path>
+      </svg>
+    </div>
+    <h3 style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #2d3748;
+    ">Club Services</h3>
+    <p style="
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    ">
+      Engaging members through exciting events, leadership opportunities, and meaningful connections within the community.
+    </p>
+    <a href="#" class="card-link" style="
+      display: inline-flex;
+      align-items: center;
+      color: #185a9d;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    ">
+      Learn more
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</div>
+
+
+  <style>
+    /* Interactive 3D Card Effects */
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-card:hover .card-icon {
+      transform: translateZ(50px) rotate(5deg);
+    }
+    
+    .card-link:hover {
+      transform: translateX(5px);
+    }
+    
+    /* Animation for background elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    .bg-element {
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    /* Different timing for each element */
+    .bg-element:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    .bg-element:nth-child(2) {
+      animation-delay: 2s;
+    }
+  </style>
+
+  <script>
+    // Enhanced 3D tilt effect on mouse move
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px) scale(1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+      });
+    });
+  </script>
+</section>
+
+<!-- Premium Events Gallery Section with Blur & Coming Soon Card -->
+<section class="premium-events" style="
+  padding: 120px 0;
+  background: linear-gradient(135deg, #f9f9ff 0%, #f0f2ff 100%);
+  position: relative;
+  overflow: hidden;
+">
+
+  <!-- Blur & Dim Overlay -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(4.75px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 2;
+  "></div>
+
+  <!-- Coming Soon Glass Card -->
+  <div style="
+    height: 425px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 80px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(50px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.5),
+                0 0 80px rgba(236, 60, 165, 0.4);
+    z-index: 3;
+    animation: glowPulse 3s ease-in-out infinite;
+  ">
+    <h2 style="
+      font-size: 2.5rem;
+      margin-top: 30%;
+      font-weight: 800;
+      background: linear-gradient(90deg, #6c63ff, #ec3ca5, #00f0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    "><img src="assets/img/padlock.svg" alt="Coming Soon" style="width: 50px; height: 50px; margin-bottom: 20px;" />
+      Coming Soon
+    </h2>
+  </div>
+
+  <!-- Original Content (unchanged) -->
+  <div class="container position-relative" style="z-index: 1;">
+    <div class="section-header text-center mb-6" data-aos="fade-up">
+      <span class="section-label">OUR LATEST WORK</span>
+      <h2 class="section-title">
+        Events That
+        <span>Inspire</span>
+      </h2>
+      <p class="section-description mx-auto">
+        Discover our transformative events that create lasting impact and bring communities together
+      </p>
+    </div>
+
+    <!-- Events Carousel -->
+    <div class="events-carousel owl-carousel owl-theme" data-aos="fade-up" data-aos-delay="100">
+
+      <!-- Event 1 -->
+      <div class="event-card">
+        <div class="event-image-wrapper">
+          <img alt="Event 1" class="event-image" src="assets/img/events-item-2.jpg" />
+        </div>
+        <div class="event-content">
+          <h3>Community Cleanup Drive</h3>
+          <p>Join us for a day of making our neighborhoods cleaner and greener through collective effort.</p>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card">
+        <div class="event-image-wrapper">
+          <img alt="Event 2" class="event-image" src="assets/img/event 1.jpg" />
+        </div>
+        <div class="event-content">
+          <h3>Annual Charity Gala</h3>
+          <p>A night of elegance and generosity to support our local causes and initiatives.</p>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card">
+        <div class="event-image-wrapper">
+          <img alt="Event 3" class="event-image" src="assets/img/event3.jpeg" />
+        </div>
+        <div class="event-content">
+          <h3>Outdoor Music Festival</h3>
+          <p>Experience the joy of live music and community togetherness under the open sky.</p>
+        </div>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="event-card">
+        <div class="event-image-wrapper">
+          <img alt="Event 4" class="event-image" src="assets/img/events-item-1.jpg" />
+        </div>
+        <div class="event-content">
+          <h3>Food Truck Fiesta</h3>
+          <p>A culinary celebration bringing together flavors from around the world.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* Keep your original styles + add glow animation */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 40px rgba(108, 99, 255, 0.5), 0 0 80px rgba(236, 60, 165, 0.4); }
+  50% { box-shadow: 0 0 60px rgba(108, 99, 255, 0.7), 0 0 120px rgba(236, 60, 165, 0.6); }
+  100% { box-shadow: 0 0 40px rgba(108, 99, 255, 0.5), 0 0 80px rgba(236, 60, 165, 0.4); }
+}
+</style>
+   <style>
+    /* Keyframe Animations */
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+
+  /* Event Card Hover Effects */
+  .event-card:hover {
+    transform: translateY(-15px) scale(1.02) !important;
+    box-shadow: 0 35px 60px -15px rgba(108, 99, 255, 0.3) !important;
+  }
+  
+  .event-card:hover .event-media img {
+    transform: scale(1.1) !important;
+  }
+  
+  /* Button Hover Effects */
+  .event-btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.6) !important;
+  }
+  
+  .event-btn:hover i {
+    transform: translateX(5px) !important;
+  }
+  
+  .btn-explore:hover {
+    color: white !important;
+    border-color: #6c63ff !important;
+  }
+  
+  .btn-explore:hover .hover-bg {
+    transform: translateX(0) !important;
+  }
+  
+  .btn-explore:hover i {
+    transform: translateX(5px) !important;
+    color: white !important;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .events-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .section-title {
+      font-size: 2.5rem !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem !important;
+    }
+    
+    .section-description {
+      font-size: 1.1rem !important;
+    }
+  }
+   </style>
+   <script>
+    // Add tilt effect to event cards
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.event-card');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const x = e.clientX - card.getBoundingClientRect().left;
+        const y = e.clientY - card.getBoundingClientRect().top;
+        
+        const centerX = card.offsetWidth / 2;
+        const centerY = card.offsetHeight / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+      });
+    });
+  });
+   </script>
+  </main>
+  <!-- Footer -->
+  <footer class="footer position-relative light-background" id="footer">
+   <div class="container footer-top">
+    <div class="row gy-4">
+     <div class="col-lg-4 col-md-6 footer-about">
+      <a class="logo d-flex align-items-center" href="index.html">
+       <span class="sitename">
+        Developed By
+       </span>
+      </a>
+      <div class="footer-contact pt-3">
+       <p>
+        Rishabh Verma & Sarthak Perti
+       </p>
+       <p class="mt-3">
+        <strong>
+         Phone:
+        </strong>
+        <span>
+         +91 8294854966 , +91 8968364024
+        </span>
+       </p>
+       <p>
+        <strong>
+         Email:
+        </strong>
+        <span>
+         rishabh19v16@gmail.com
+        </span>
+       </p>
+      </div>
+      <div class="social-links d-flex mt-4">
+       <a href="">
+        <i class="bi bi-twitter-x">
+        </i>
+       </a>
+       <a href="">
+        <i class="bi bi-facebook">
+        </i>
+       </a>
+       <a href="">
+        <i class="bi bi-instagram">
+        </i>
+       </a>
+       <a href="">
+        <i class="bi bi-linkedin">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div class="col-lg-2 col-md-3 footer-links">
+      <h4>
+       Useful Links
+      </h4>
+      <ul>
+       <li>
+        <a href="#">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="#">
+         About us
+        </a>
+       </li>
+       <li>
+        <a href="#">
+         Services
+        </a>
+       </li>
+       <li>
+        <a href="#">
+         Terms of service
+        </a>
+       </li>
+       <li>
+        <a href="#">
+         Privacy policy
+        </a>
+       </li>
+      </ul>
+     </div>
+     
+     <div class="col-lg-4 col-md-12 footer-newsletter">
+      <h4>
+       Our Newsletter
+      </h4>
+      <p>
+       Subscribe to our newsletter and receive the latest news about our
+              products and services!
+      </p>
+      <form action="forms/newsletter.php" class="php-email-form" method="post">
+       <div class="newsletter-form">
+        <input name="email" type="email"/>
+        <input type="submit" value="Subscribe"/>
+       </div>
+       <div class="loading">
+        Loading
+       </div>
+       <div class="error-message">
+       </div>
+       <div class="sent-message">
+        Your subscription request has been sent. Thank you!
+       </div>
+      </form>
+     </div>
+    </div>
+   </div>
+   <div class="container copyright text-center mt-4">
+   </div>
+  </footer>
+  <!-- Scroll Top -->
+  <a class="scroll-top d-flex align-items-center justify-content-center" href="#" id="scroll-top">
+   <i class="bi bi-arrow-up-short">
+   </i>
+  </a>
+ <!-- Preloader -->
+<div id="preloader">
+  <div class="loader-container">
+    <div class="loader-ring"></div>
+    <img src="assets/img/R.png" class="loader-logo">
+  </div>
+</div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
+  </script>
+  <script src="assets/vendor/php-email-form/validate.js">
+  </script>
+  <script src="assets/vendor/aos/aos.js">
+  </script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js">
+  </script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js">
+  </script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js">
+  </script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js">
+  </script>
+  <!-- Firebase and jQuery Libraries -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- Consolidated Application Script -->
+  <script>
+   // Firebase Configuration (only defined once)
+      const firebaseConfig = {
+        apiKey: "AIzaSyADa6vTJ1mzfkfa-_1MX3KW7F-9Mu-58AE",
+        authDomain: "rotaract-ad073-e6e80.firebaseapp.com",
+        projectId: "rotaract-ad073-e6e80",
+        storageBucket: "rotaract-ad073-e6e80.appspot.com",
+        messagingSenderId: "412314191747",
+        appId: "1:412314191747:web:6ce5fe41697a4f929258b6",
+        measurementId: "G-4TK227GSCB",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const FieldValue = firebase.firestore.FieldValue;
+
+      // DOM Ready Handler
+      document.addEventListener("DOMContentLoaded", function () {
+        initCarousels();
+        initModals();
+        initAuth();
+        initEventListeners();
+      });
+
+      // Initialize Carousels
+      function initCarousels() {
+        // Testimonial Carousel
+        $(".carousel-testimony").owlCarousel({
+          loop: true,
+          margin: 20,
+          nav: false,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          smartSpeed: 800,
+          responsive: {
+            0: { items: 1 },
+            768: { items: 2 },
+            992: { items: 3 },
+            1200: { items: 3.5 },
+          },
+        });
+
+        // Events Carousel
+        $(".owl-carousel").owlCarousel({
+          loop: true,
+          margin: 30,
+          nav: false,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          responsive: {
+            0: { items: 1 },
+            768: { items: 2 },
+            1024: { items: 3 },
+          },
+        });
+      }
+
+      // Initialize Modals
+      function initModals() {
+        // Login Modal
+        document
+          .getElementById("loginTrigger")
+          .addEventListener("click", function () {
+            document.getElementById("loginModal").style.display = "flex";
+          });
+
+        // Close Modals
+        document
+          .getElementById("closeModal")
+          .addEventListener("click", function () {
+            document.getElementById("reviewModal").style.display = "none";
+          });
+
+        window.addEventListener("click", function (e) {
+          if (e.target === document.getElementById("loginModal")) {
+            document.getElementById("loginModal").style.display = "none";
+          }
+          if (e.target === document.getElementById("reviewModal")) {
+            document.getElementById("reviewModal").style.display = "none";
+          }
+        });
+
+        // Review Modal
+        document
+          .getElementById("submitReviewBtn")
+          .addEventListener("click", function () {
+            document.getElementById("reviewModal").style.display = "flex";
+          });
+      }
+
+      // Initialize Auth
+      function initAuth() {
+        // Auth State Listener
+        auth.onAuthStateChanged(async (user) => {
+          if (user) {
+            await handleSignedInUser(user);
+          } else {
+            handleSignedOutUser();
+          }
+        });
+
+        // Load testimonials
+        db.collection("testimonials")
+          .where("status", "==", "approved")
+          .orderBy("timestamp", "desc")
+          .onSnapshot((snapshot) => {
+            const carousel = document.querySelector("#testimonialCarousel");
+            carousel.innerHTML = "";
+            snapshot.forEach((doc) => {
+              const data = doc.data();
+              const card = `
+              <div class="item">
+                <div style="background:#fff; border-radius:15px; box-shadow:0 4px 20px rgba(0,0,0,0.05); padding:30px; margin:10px;">
+                  <div style="color:orange; font-size:18px; margin-bottom:10px;">${data.rating}</div>
+                  <p style="color:#555;">${data.body}</p>
+                  <div style="display:flex; align-items:center; margin-top:20px;">
+                    <img src="assets/img/student2.jpeg" alt="${data.name}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; margin-right:15px;" />
+                    <div><strong>${data.name}</strong><br /><span style="color:#007bff;">${data.branch} ${data.year}</span></div>
+                  </div>
+                </div>
+              </div>
+            `;
+              carousel.insertAdjacentHTML("beforeend", card);
+            });
+            $(".carousel-testimony").trigger("refresh.owl.carousel");
+          });
+      }
+
+      // Initialize Event Listeners
+      function initEventListeners() {
+        // User dropdown toggle
+        const userIcon = document.getElementById("userIcon");
+        const userDropdown = document.getElementById("userDropdown");
+
+        userIcon.addEventListener("click", (e) => {
+          e.stopPropagation();
+          userDropdown.style.display =
+            userDropdown.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!userDropdown.contains(e.target)) {
+            userDropdown.style.display = "none";
+          }
+        });
+
+        // Submit review
+        document
+          .getElementById("submitReview")
+          .addEventListener("click", async () => {
+            const name = document.getElementById("reviewName").value.trim();
+            const branch = document.getElementById("reviewBranch").value.trim();
+            const year = document.getElementById("reviewYear").value.trim();
+            const rating = document.getElementById("reviewRating").value;
+            const body = document.getElementById("reviewBody").value.trim();
+
+            if (!name || !branch || !year || !rating || !body) {
+              alert("Please fill in all fields.");
+              return;
+            }
+
+            try {
+              await db.collection("testimonials").add({
+                name,
+                branch,
+                year,
+                rating,
+                body,
+                status: "pending",
+                timestamp: FieldValue.serverTimestamp(),
+              });
+
+              document.getElementById("reviewModal").style.display = "none";
+              document.getElementById("reviewName").value = "";
+              document.getElementById("reviewBranch").value = "";
+              document.getElementById("reviewYear").value = "";
+              document.getElementById("reviewRating").value = "";
+              document.getElementById("reviewBody").value = "";
+              $(".carousel-testimony").trigger("refresh.owl.carousel");
+              alert("Your testimonial was submitted successfully!");
+            } catch (err) {
+              console.error("Error submitting testimonial:", err);
+              alert("Failed to submit. Check console for details.");
+            }
+          });
+      }
+
+      // Handle Signed In User
+      async function handleSignedInUser(user) {
+        // Show user info
+        document.getElementById("userInfo").style.display = "flex";
+        document.getElementById("loginTrigger").style.display = "none";
+
+        // Set user photo if available
+        if (user.photoURL) {
+          document.getElementById("userIcon").src = user.photoURL;
+        }
+
+        // Check if user is admin
+        const userDoc = await db.collection("users").doc(user.uid).get();
+        if (userDoc.exists && userDoc.data().role === "admin") {
+          document.getElementById("dashboardOption").style.display = "block";
+        }
+
+        // Auto-fill review name
+        const nameInput = document.getElementById("reviewName");
+        if (nameInput) {
+          try {
+            const snap = await db.collection("users").doc(user.uid).get();
+            const name =
+              snap.exists && snap.data().name
+                ? snap.data().name
+                : user.displayName || user.email.split("@")[0];
+            nameInput.value = name;
+          } catch (err) {
+            console.error("Could not fetch user name:", err);
+            nameInput.value = user.email.split("@")[0];
+          }
+        }
+      }
+
+      // Handle Signed Out User
+      function handleSignedOutUser() {
+        document.getElementById("userInfo").style.display = "none";
+        document.getElementById("loginTrigger").style.display = "block";
+      }
+
+      // Auth Functions
+      async function emailLogin() {
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+
+        if (!email || !password) {
+          alert("Please enter both email and password.");
+          return;
+        }
+
+        try {
+          // Try signing in
+          await auth.signInWithEmailAndPassword(email, password);
+          document.getElementById("loginModal").style.display = "none";
+        } catch (error) {
+          // If no account, try creating one
+          if (error.code === "auth/user-not-found") {
+            try {
+              await auth.createUserWithEmailAndPassword(email, password);
+              document.getElementById("loginModal").style.display = "none";
+            } catch (createError) {
+              alert(createError.message);
+            }
+          } else {
+            alert(error.message);
+          }
+        }
+      }
+
+      async function googleLogin() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try {
+          const result = await auth.signInWithPopup(provider);
+          const user = result.user;
+
+          // Check if user exists in Firestore
+          const doc = await db.collection("users").doc(user.uid).get();
+
+          if (!doc.exists) {
+            // Show registration modal for new users
+            document.getElementById("regName").textContent =
+              user.displayName || user.email;
+            document.getElementById("registrationModal").style.display = "flex";
+          } else {
+            // Existing user: check status
+            const data = doc.data();
+            if (data.status === "approved") {
+              console.log("Approved user logged in.");
+            } else if (data.status === "rejected") {
+              await db.collection("users").doc(user.uid).delete();
+              await auth.signOut();
+              alert("Your registration was rejected by admin.");
+            } else {
+              alert("Your registration is under review.");
+              await auth.signOut();
+            }
+          }
+        } catch (error) {
+          console.error("Google login error:", error);
+          alert(error.message);
+        }
+      }
+
+      async function submitRegistration() {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const data = {
+          name: user.displayName || user.email.split("@")[0],
+          email: user.email,
+          uid: document.getElementById("universityId").value,
+          dob: document.getElementById("dob").value,
+          gender: document.getElementById("gender").value,
+          phone: document.getElementById("phone").value,
+          willPay: document.getElementById("agreeFee").checked,
+          status: "pending",
+          role: "none",
+          createdAt: FieldValue.serverTimestamp(),
+        };
+        const phone = document.getElementById("phone").value.trim();
+        if (!/^\d{10}$/.test(phone)) {
+          return alert("Please enter a valid 10-digit phone number.");
+        }
+
+        if (!data.uid || !data.dob || !data.gender || !data.phone) {
+          return alert("Please fill all fields.");
+        }
+
+        try {
+          await db.collection("users").doc(user.uid).set(data);
+          alert("Registration submitted! Awaiting approval.");
+          document.getElementById("registrationModal").style.display = "none";
+          document.getElementById("loginModal").style.display = "none";
+        } catch (error) {
+          console.error("Registration error:", error);
+          alert("Failed to submit registration.");
+        }
+      }
+
+      function logoutUser() {
+        auth.signOut().then(() => {
+          window.location.reload();
+        });
+      }
+
+      function closeLogin() {
+        document.getElementById("loginModal").style.display = "none";
+      }
+
+      function goToDashboard() {
+        window.location.href = "dashboard.html";
+      }
+
+      function goToProfile() {
+        window.location.href = "profile.html";
+      }
+
+      // Logout the deleted user
+
+      /**
+       * Trigger: a document is deleted from /users/{uid}
+       * Result : the corresponding Firebase‑Auth account is disabled and its
+       *          refresh tokens are revoked, forcing the user to log out.
+       */
+      exports.handleUserDeletion = functions.firestore
+        .document("users/{uid}")
+        .onDelete(async (snap, context) => {
+          const uid = context.params.uid;
+
+          try {
+            // Disable account (prevents new sign‑ins)
+            await admin.auth().updateUser(id, { disabled: true });
+
+            // Revoke existing sessions (forces sign‑out everywhere)
+            await admin.auth().revokeRefreshTokens(id);
+
+            console.log(`✅ Auth account ${id} disabled & tokens revoked`);
+          } catch (err) {
+            console.error(`❌ Failed to disable/revoke ${id}`, err);
+          }
+        });
+  </script>
+  <style>
+   /* Custom Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+  
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Glass Morphism Effect */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .glass-morphism:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(var(--hover-color), 0.3);
+  }
+  
+  /* 3D Button Effect */
+  .btn-primary {
+    box-shadow: 0 4px 15px rgba(42, 67, 101, 0.3);
+    overflow: hidden;
+  }
+  
+  .btn-primary .hover-animate {
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+    transform: translateX(-100%);
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .btn-primary:hover .hover-animate {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+  
+  /* 3D Image Perspective */
+  #cucrc-image-3d {
+    transition: transform 0.5s ease;
+    transform-origin: center;
+  }
+  
+  #cucrc-image-3d:hover {
+    transform: rotateY(10deg) scale(1.03);
+  }
+  </style>
+  <script>
+   // Three.js 3D Background Animation
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Three.js scene
+    const container = document.getElementById('cucrc-3d-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+    
+    // Create floating elements
+    const geometry = new THREE.TorusGeometry(2, 0.5, 16, 100);
+    const material = new THREE.MeshBasicMaterial({ 
+      color: 0x3182ce,
+      transparent: true,
+      opacity: 0.05
+    });
+    
+    const elements = [];
+    for (let i = 0; i < 15; i++) {
+      const element = new THREE.Mesh(geometry, material.clone());
+      element.position.x = (Math.random() - 0.5) * 100;
+      element.position.y = (Math.random() - 0.5) * 100;
+      element.position.z = (Math.random() - 0.5) * 100;
+      element.rotation.x = Math.random() * Math.PI;
+      element.rotation.y = Math.random() * Math.PI;
+      element.scale.setScalar(0.5 + Math.random() * 2);
+      scene.add(element);
+      elements.push(element);
+    }
+    
+    camera.position.z = 30;
+    
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      elements.forEach((element, index) => {
+        element.rotation.x += 0.001 * (index + 1);
+        element.rotation.y += 0.001 * (index + 1);
+        element.position.y += Math.sin(Date.now() * 0.001 + index) * 0.01;
+      });
+      
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = container.offsetWidth / container.offsetHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.offsetWidth, container.offsetHeight);
+    });
+    
+    // 3D Badge Animation
+    const badge = document.getElementById('cucrc-badge-3d');
+    const badgeContainer = badge.parentElement;
+    
+    badgeContainer.addEventListener('mousemove', (e) => {
+      const rect = badgeContainer.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateY = (x - centerX) / 20;
+      const rotateX = (centerY - y) / 20;
+      
+      badge.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+    });
+    
+    badgeContainer.addEventListener('mouseleave', () => {
+      badge.style.transform = 'translateZ(20px)';
+    });
+  });
+  </script>
+ </body>
+</html>
+

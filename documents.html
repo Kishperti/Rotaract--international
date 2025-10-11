@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District Documents Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Header styles - Updated to match index page */
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
+        }
+        
+        /* Navigation menu - Updated to match index page */
+        .navmenu {
+            display: flex;
+        }
+        
+        .navmenu ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navmenu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .navmenu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8e2de2, #4a00e0);
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+        
+        .navmenu a:hover {
+            color: #6c63ff;
+        }
+        
+        .navmenu a:hover:after {
+            width: 100%;
+        }
+        
+        .navmenu a.active {
+            color: #6c63ff;
+        }
+        
+        .navmenu a.active:after {
+            width: 100%;
+        }
+        
+        #loginTrigger {
+            background: linear-gradient(135deg, #6f00ff, #9f00ff);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.3);
+        }
+        
+        #loginTrigger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(111, 0, 255, 0.4);
+        }
+        
+        /* Mobile Navigation Toggle - Matching index page */
+        .mobile-nav-toggle {
+            display: none;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 450px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            color: white;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 18px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            padding-left: 60px;
+            outline: none;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8e2de2;
+            font-size: 1.2rem;
+        }
+        
+        /* Main Content */
+        .main-content {
+            position: relative;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 8px rgba(142, 45, 226, 0.2);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70px;
+            height: 5px;
+            background: linear-gradient(90deg, #8e2de2, #ff6ec4);
+            border-radius: 3px;
+        }
+        
+        /* Document Cards Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .document-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(142, 45, 226, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px) rotate3d(1, 0, 0, 15deg);
+            cursor: pointer;
+            perspective: 1000px;
+        }
+        
+        .document-card.show {
+            opacity: 1;
+            transform: translateY(0) rotate3d(0, 0, 0, 0);
+        }
+        
+        .document-card:hover {
+            transform: translateY(-10px) rotate3d(0, 0, 0, 0) scale(1.03);
+            box-shadow: 0 20px 45px rgba(142, 45, 226, 0.25);
+        }
+        
+        .document-header {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            color: white;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(30deg);
+        }
+        
+        .document-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .document-header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .document-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .document-body {
+            padding: 25px;
+        }
+        
+        .document-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .document-description {
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(142, 45, 226, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #7d25d0, #3a00c0);
+            box-shadow: 0 8px 20px rgba(142, 45, 226, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .download-btn i {
+            margin-right: 10px;
+        }
+        
+        /* Floating elements animation */
+        @keyframes float3d {
+            0% {
+                transform: translate(0, 0) rotate(0deg) rotate3d(1, 1, 1, 0deg);
+            }
+            33% {
+                transform: translate(15px, -20px) rotate(5deg) rotate3d(1, 1, 1, 5deg);
+            }
+            66% {
+                transform: translate(-10px, 15px) rotate(-3deg) rotate3d(1, 1, 1, -3deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg) rotate3d(1, 1, 1, 0deg);
+            }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; 
+            left: 0; 
+            z-index: 3;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            animation: float3d 20s infinite ease-in-out;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Glass Morphism Popup Styling */
+        .popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;   /* force full width */
+  height: 100vh;  /* force full height */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  overflow: hidden;  /* stop body scroll leak */
+}
+
+
+        .popup-container.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;        /* scroll inside popup */
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+/* Prevent background scroll/zoom when popup is active */
+body.popup-open {
+  overflow: hidden !important;
+  height: 100%;
+  touch-action: none;            /* blocks pinch zoom */
+  overscroll-behavior: contain;  /* stops scroll chaining */
+}
+
+/* Extra Chrome fix: prevent elastic scroll */
+html.popup-open {
+  overflow: hidden;
+  height: 100%;
+}
+
+
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.9) translateZ(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateZ(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .popup-header h3 {
+            margin: 0;
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .popup-body {
+            padding: 30px;
+        }
+
+        .popup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .popup-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            perspective: 500px;
+            transform: translateZ(0);
+        }
+
+        .popup-card:hover {
+            transform: translateY(-8px) translateZ(10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(142, 45, 226, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .popup-card:hover .popup-card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .popup-card h4 {
+            margin: 0 0 15px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .popup-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .popup-download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-download-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .popup-download-btn i {
+            margin-right: 8px;
+        }
+
+        /* Download progress indicator */
+        .download-progress {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 10000;
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design - Updated for mobile navigation */
+        @media (max-width: 992px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .navmenu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                padding: 80px 20px 30px;
+                transition: all 0.4s ease;
+                z-index: 999;
+            }
+            
+            .navmenu.active {
+                right: 0;
+            }
+            
+            .navmenu ul {
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+            }
+            
+            .navmenu a {
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
+                transition: all 0.3s;
+            }
+            
+            .navmenu a:hover {
+                background: rgba(110, 99, 255, 0.1);
+            }
+            
+            .navmenu a:after {
+                display: none;
+            }
+            
+            #loginTrigger {
+                width: 100%;
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .popup-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 20px;
+            }
+            
+            .popup-card {
+                padding: 20px;
+            }
+            
+            .popup-card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            /* Responsive logo */
+            .logo img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navmenu {
+                width: 250px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popup-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            /* Smaller logo for mobile */
+            .logo img {
+                height: 35px;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+            }
+        }
+        
+        /* Background elements */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            filter: blur(5px);
+        }
+        
+        /* Mobile navigation overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(142, 45, 226, 0.1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #7d25d0, #3a00c0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="bg-elements">
+        <div class="bg-element" style="width: 300px; height: 300px; background: #8e2de2; top: 10%; left: 5%; animation: float3d 25s infinite ease-in-out;"></div>
+        <div class="bg-element" style="width: 200px; height: 200px; background: #4a00e0; bottom: 15%; right: 10%; animation: float3d 30s infinite ease-in-out; animation-delay: 2s;"></div>
+        <div class="bg-element" style="width: 150px; height: 150px; background: #ff6ec4; top: 40%; right: 20%; animation: float3d 20s infinite ease-in-out; animation-delay: 1s;"></div>
+    </div>
+    
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    
+    <!-- Header Section - Updated with mobile navigation -->
+    <header class="header">
+        <div class="header-container">
+            <a class="logo" href="index.html">
+                <img alt="Rotaract Club Logo" src="assets/img/R2.png"/>
+            </a>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="navmenu" id="navmenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="reveal.html">Club Finder</a></li>
+                    <li><a class="active" href="documents.html">District Documents</a></li>
+                    <li><button id="loginTrigger">Login</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Download Progress Indicator -->
+    <div class="download-progress" id="downloadProgress">
+        <i class="fas fa-download"></i>
+        <span id="downloadText">Downloading file...</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Floating elements -->
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 150px; height: 150px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23ffffff\'><path d=\'M12 2L4 12l8 10 8-10z\'/></svg>'); top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-element" style="width: 100px; height: 100px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23ffffff\'><circle cx=\'12\' cy=\'12\' r=\'10\'/></svg>'); top: 70%; left: 80%; animation-delay: 2s; animation-duration: 22s;"></div>
+            <div class="floating-element" style="width: 120px; height: 120px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23ffffff\'><path d=\'M12 2L2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg>'); top: 40%; left: 85%; animation-delay: 4s; animation-duration: 25s;"></div>
+            <div class="floating-element" style="width: 80px; height: 80px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23ffffff\'><path d=\'M12 2L4 7l8 5 8-5zM4 12l8 5 8-5M4 17l8 5 8-5\'/></svg>'); top: 80%; left: 15%; animation-delay: 6s; animation-duration: 18s;"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">District Documents Repository</h1>
+            <p class="hero-subtitle">Access all official documents, templates, and resources in one centralized location</p>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search documents...">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2 class="section-title">Official Documents</h2>
+        
+        <div class="documents-grid">
+            <!-- Database Card -->
+            <div class="document-card" onclick="openPopup('databasePopup')">
+                <div class="document-header">
+                    <h3>Database</h3>
+                    <p>District 3011</p>
+                    <i class="fas fa-database document-icon"></i>
+                </div>
+                <div class="document-body">
+                    <div class="document-meta">
+                        <span><i class="far fa-file"></i> PDF</span>
+                        <span><i class="far fa-calendar-alt"></i> Updated: 31/08/2025</span>
+                    </div>
+                    <p class="document-description">
+                        Access various district databases including presidents, secretaries, and zonal information.
+                    </p>
+                    <a href="#" class="download-btn" onclick="event.stopPropagation(); openPopup('databasePopup')">
+                        <i class="fas fa-eye"></i> View Documents
+                    </a>
+                </div>
+            </div>
+            
+            <!-- DoV Guidelines Card -->
+            <div class="document-card" onclick="openPopup('dovPopup')">
+                <div class="document-header">
+                    <h3>DoV Guidelines</h3>
+                    <p>Standard Format</p>
+                    <i class="fas fa-file-contract document-icon"></i>
+                </div>
+                <div class="document-body">
+                    <div class="document-meta">
+                        <span><i class="far fa-file"></i> PDF</span>
+                        <span><i class="far fa-calendar-alt"></i> Updated: 31/08/2025</span>
+                    </div>
+                    <p class="document-description">
+                        Official guidelines and document formats for District of Vision (DoV) initiatives.
+                    </p>
+                    <a href="#" class="download-btn" onclick="event.stopPropagation(); openPopup('dovPopup')">
+                        <i class="fas fa-eye"></i> View Documents
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Installation Guidelines Card -->
+            <div class="document-card" onclick="openPopup('installationPopup')">
+                <div class="document-header">
+                    <h3>Installation Guidelines</h3>
+                    <p>District Activities</p>
+                    <i class="fas fa-tasks document-icon"></i>
+                </div>
+                <div class="document-body">
+                    <div class="document-meta">
+                        <span><i class="far fa-file-pdf"></i> PDF</span>
+                        <span><i class="far fa-calendar-alt"></i> Updated: 31/08/2025</span>
+                    </div>
+                    <p class="document-description">
+                        Comprehensive guidelines for installation ceremonies of various club types.
+                    </p>
+                    <a href="#" class="download-btn" onclick="event.stopPropagation(); openPopup('installationPopup')">
+                        <i class="fas fa-eye"></i> View Documents
+                    </a>
+                </div>
+            </div>
+            
+            <!-- International Services Card -->
+            <div class="document-card" onclick="openPopup('internationalPopup')">
+                <div class="document-header">
+                    <h3>International Services</h3>
+                    <p>Global Initiatives</p>
+                    <i class="fas fa-globe document-icon"></i>
+                </div>
+                <div class="document-body">
+                    <div class="document-meta">
+                        <span><i class="far fa-file-pdf"></i> PDF</span>
+                        <span><i class="far fa-calendar-alt"></i> Updated: 31/08/2025</span>
+                    </div>
+                    <p class="document-description">
+                        Documents related to international services, sister club agreements, and global initiatives.
+                    </p>
+                    <a href="#" class="download-btn" onclick="event.stopPropagation(); openPopup('internationalPopup')">
+                        <i class="fas fa-eye"></i> View Documents
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Reporting Card -->
+            <div class="document-card" onclick="openPopup('reportingPopup')">
+                <div class="document-header">
+                    <h3>Reporting</h3>
+                    <p>Documentation Standards</p>
+                    <i class="fas fa-chart-line document-icon"></i>
+                </div>
+                <div class="document-body">
+                    <div class="document-meta">
+                        <span><i class="far fa-file-pdf"></i> PDF</span>
+                        <span><i class="far fa-calendar-alt"></i>Updated: 31/08/2025</span>
+                    </div>
+                    <p class="document-description">
+                        Reporting formats and guidelines for documenting club activities and achievements.
+                    </p>
+                    <a href="#" class="download-btn" onclick="event.stopPropagation(); openPopup('reportingPopup')">
+                        <i class="fas fa-eye"></i> View Documents
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Logos Card -->
+            <div class="document-card" onclick="openPopup('logosPopup')">
+                <div class="document-header">
+                    <h3>Logos</h3>
+                    <p>Brand Resources</p>
+                    <i class="fas fa-paint-brush document-icon"></i>
+                </div>
+                <div class="document-body">
+                    <div class="document-meta">
+                        <span><i class="far fa-folder"></i> Folders</span>
+                        <span><i class="far fa-calendar-alt"></i> Updated: 31/08/2025</span>
+                    </div>
+                    <p class="document-description">
+                        Access official logos, brand assets, and taglines for Rotary, Rotaract, and district initiatives.
+                    </p>
+                    <a href="#" class="download-btn" onclick="event.stopPropagation(); openPopup('logosPopup')">
+                        <i class="fas fa-eye"></i> View Logos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Database Popup -->
+    <div id="databasePopup" class="popup-container">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Database Documents</h3>
+                <button class="close-btn" onclick="closePopup('databasePopup')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>DaC Database.pdf</h4>
+                        <p>District at a glance database with comprehensive information</p>
+                        <a class="popup-download-btn" onclick="downloadFile('DaC Database.pdf', 'https://drive.google.com/uc?export=download&id=1L2Q_7VlxOhIxlL8BemXWiW6sHuuhk04w')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>President's Database.pdf</h4>
+                        <p>Contact details and information about club presidents</p>
+                        <a class="popup-download-btn" onclick="downloadFile('President Database.pdf', 'https://drive.google.com/uc?export=download&id=1010voZRO8qiSUBMSzuFhnJJnXTpQHVnF')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Secretaries Database.pdf</h4>
+                        <p>Contact details and information about club secretaries</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Secretaries Database.pdf', 'https://drive.google.com/uc?export=download&id=1HGDcgyrThPVoKAkEpQ5VsraAB_ZdV1hv')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4>Zonal Divisions.pdf</h4>
+                        <p>Detailed information about zonal divisions and structure</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Zonal Divisions.pdf', 'https://drive.google.com/uc?export=download&id=1QC--KAtNyAJWJcg5KzxcnJB5ZXiDjKsr')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- DoV Guidelines Popup -->
+    <div id="dovPopup" class="popup-container">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>DoV Guidelines Documents</h3>
+                <button class="close-btn" onclick="closePopup('dovPopup')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4>DoV Guidelines.pdf</h4>
+                        <p>Complete guidelines for District of Vision initiatives</p>
+                        <a class="popup-download-btn" onclick="downloadFile('DoV Guidelines.pdf', 'https://drive.google.com/uc?export=download&id=17EmtwIHeICsETXvg0ahUXTOO7i75_9IS')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <h4>DoV Doc Format.pdf</h4>
+                        <p>Standard document format for DoV submissions</p>
+                        <a class="popup-download-btn" onclick="downloadFile('DoV Doc Format.pdf', 'https://drive.google.com/uc?export=download&id=1Gof86eCMgzLT42qLrerm5YifSOj-eQL9')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Installation Guidelines Popup -->
+    <div id="installationPopup" class="popup-container">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Installation Guidelines</h3>
+                <button class="close-btn" onclick="closePopup('installationPopup')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h4>Installation Guidelines (T + I).pdf</h4>
+                        <p>Guidelines for Training and Installation ceremonies</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Installation Guidelines (T + I).pdf', 'https://drive.google.com/uc?export=download&id=183DmXdxtdGkjxG3z6ffzFbrwWRJa7i_0')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <h4>Installation Guidelines (I).pdf</h4>
+                        <p>Guidelines specifically for Installation ceremonies</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Installation Guidelines (I).pdf', 'https://drive.google.com/uc?export=download&id=1yfe-oYiEBBM52ukTyi_3u8N4WsyMIiuj')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Installation Guidelines (Charter Club).pdf</h4>
+                        <p>Special guidelines for Charter Club installations</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Installation Guidelines (Charter Club).pdf', 'https://drive.google.com/uc?export=download&id=15nO7OIa3DRrY_VmeKAVtda7T24F6dDdO')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- International Services Popup -->
+    <div id="internationalPopup" class="popup-container">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>International Services Documents</h3>
+                <button class="close-btn" onclick="closePopup('internationalPopup')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Sister Club Agreements.pdf</h4>
+                        <p>Templates and guidelines for sister club agreements</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Sister Club Agreements.pdf', 'https://drive.google.com/uc?export=download&id=1hbc2ytlhl_N9-2aulcopDA_HyH0KOlq-')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>LHE 25-26.pdf</h4>
+                        <p>Long-term Humanitarian Efforts plan for 2025-2026</p>
+                        <a class="popup-download-btn" onclick="downloadFile('LHE 25-26.pdf', 'https://drive.google.com/uc?export=download&id=14tt6McQKBovxZ70JpG3oN1mIos2c7gas')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h4>International Services.pdf</h4>
+                        <p>Comprehensive international services guidelines</p>
+                        <a class="popup-download-btn" onclick="downloadFile('International Services.pdf', 'https://drive.google.com/uc?export=download&id=1_JlhUBbdC6wlHsywoJgUcFjlw2-CJuuw')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Reporting Popup -->
+    <div id="reportingPopup" class="popup-container">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Reporting Documents</h3>
+                <button class="close-btn" onclick="closePopup('reportingPopup')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <h4>Reporting Format.pdf</h4>
+                        <p>Standard format for all district reporting</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Reporting Format.pdf', 'https://drive.google.com/uc?export=download&id=186SfpmOdecF3WYhqEg6noD6DHVgHryN6')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4>Guidelines for Reporting.pdf</h4>
+                        <p>Comprehensive guidelines for effective reporting</p>
+                        <a class="popup-download-btn" onclick="downloadFile('Guidelines for Reporting.pdf', 'https://drive.google.com/uc?export=download&id=1AnV6ncfgd563AVnYO15uNIz7EsXQX85-')">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Logos Popup -->
+    <div id="logosPopup" class="popup-container">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Logo Resources</h3>
+                <button class="close-btn" onclick="closePopup('logosPopup')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h4>Rotary 3011</h4>
+                        <p>Official Rotary International District 3011 logos and branding assets</p>
+                        <a class="popup-download-btn" onclick="window.open('https://drive.google.com/drive/folders/1YFRcGWqnIOlslSe1kFeYC5xWus9xR51M?usp=drive_link', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> Open Folder
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4>Rotaract 3011</h4>
+                        <p>Official Rotaract District 3011 logos and branding assets</p>
+                        <a class="popup-download-btn" onclick="window.open('https://drive.google.com/drive/folders/11fcqH09agNhNAo6yUS7M24yzNAA1-Gz5?usp=drive_link', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> Open Folder
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <h4>RI Tagline 25-26</h4>
+                        <p>Rotary International official tagline resources for 2025-2026</p>
+                        <a class="popup-download-btn" onclick="window.open('https://drive.google.com/drive/folders/1M3xmS-BDgCtY5v31d83ZG6fr7j-quhyI?usp=drive_link', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> Open Folder
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h4>Logo Strip</h4>
+                        <p>Logo strips and combination marks for official use</p>
+                        <a class="popup-download-btn" onclick="window.open('https://drive.google.com/drive/folders/1VJfWtPQvNBzg18YXDF9-7PndzWTiDx4J?usp=drive_link', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> Open Folder
+                        </a>
+                    </div>
+                    
+                    <div class="popup-card">
+                        <div class="popup-card-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <h4>District Tagline</h4>
+                        <p>District-specific taglines and branding materials</p>
+                        <a class="popup-download-btn" onclick="window.open('https://drive.google.com/drive/folders/17bS6jogR00_FGIZGarkQyUMPMjQdvEXC?usp=drive_link', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> Open Folder
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const navmenu = document.getElementById('navmenu');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        
+        function toggleMobileNav() {
+            navmenu.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = navmenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        mobileNavToggle.addEventListener('click', toggleMobileNav);
+        mobileNavOverlay.addEventListener('click', toggleMobileNav);
+        
+        // Close mobile nav when clicking on links
+        document.querySelectorAll('.navmenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navmenu.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+    
+
+        // Close popup when clicking outside the content
+        document.querySelectorAll('.popup-container').forEach(popup => {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.popup-container').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Download file function
+        function downloadFile(filename, fileUrl = null) {
+            const progress = document.getElementById('downloadProgress');
+            const downloadText = document.getElementById('downloadText');
+            
+            // Show download progress
+            progress.style.display = 'flex';
+            downloadText.textContent = `Downloading ${filename}...`;
+            
+            if (fileUrl) {
+                // For actual file URLs, create a temporary link to trigger download
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.setAttribute('download', filename);
+                link.setAttribute('target', '_blank');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                // For simulated files, create a blob and trigger download
+                const content = `This is a simulated download of ${filename}. In a real application, this would be the actual file content.`;
+                const blob = new Blob([content], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up the URL object
+                setTimeout(() => URL.revokeObjectURL(url), 100);
+            }
+            
+            // Update progress indicator after a short delay
+            setTimeout(() => {
+                downloadText.textContent = 'Download complete!';
+                progress.style.backgroundColor = '#4CAF50';
+            }, 1000);
+            
+            // Hide progress indicator after 3 seconds
+            setTimeout(() => {
+                progress.style.display = 'none';
+                progress.style.backgroundColor = '#4CAF50';
+            }, 3000);
+        }
+
+        // Initialize floating elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.document-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                document.querySelectorAll('.document-card').forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('.document-description').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Add login trigger functionality
+            document.getElementById('loginTrigger').addEventListener('click', function() {
+                alert('Login functionality would be implemented here.');
+            });
+        });
+        function openPopup(popupId) {
+  document.getElementById(popupId).classList.add('active');
+  document.body.classList.add('popup-open'); // NEW
+}
+
+function closePopup(popupId) {
+  document.getElementById(popupId).classList.remove('active');
+  document.body.classList.remove('popup-open'); // NEW
+}
+
+    </script>
+</body>
+</html>
